@@ -25,10 +25,10 @@ import { TabsPage } from '../tabs/tabs';
 })
 export class LoginPage {
 
-  user: any = {
-    mobile: '',
-    password: ''
-  };
+  // user: any = {
+  //   mobile: '',
+  //   password: ''
+  // };
 
   controls: any = [
     {
@@ -78,20 +78,20 @@ export class LoginPage {
       .then(data => {
         console.log(data);
         // this.checkProfile();
-        if (!data['pid']) {
-          this.app.getRootNavs()[0].setRoot('ProfilePage');
-        } else {
-          this.app.getRootNavs()[0].setRoot(TabsPage);
-        }
+        // if (!data['pid']) {
+        //   this.app.getRootNavs()[0].setRoot('ProfilePage');
+        // } else {
+        //   this.app.getRootNavs()[0].setRoot(TabsPage);
+        // }
       })
       .catch(error => {
         this.tools.showToast(error);
       });
   }
 
-  openPage() {
-    this.app.getRootNavs()[0].push('CommWebPage', { title: '用户使用协议', slug: 'agreement' });
-  }
+  // openPage() {
+  //   this.app.getRootNavs()[0].push('CommWebPage', { title: '用户使用协议', slug: 'agreement' });
+  // }
 
   // checkProfile() {
   //   this.users.GetUserProfile()
