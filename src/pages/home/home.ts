@@ -61,12 +61,16 @@ export class HomePage {
     window.open("tel:" + phone);
   }
 
-  copy(comp) {
+  copy(ev: Event, comp) {
+    ev.stopPropagation();
+
     this.jsCopy.copy(comp.shop_url);
     this.tools.showToast("招人链接复制成功，您可以在任何地方直接粘贴");
   }
 
-  share(comp) {
+  share(ev: Event, comp) {
+    ev.stopPropagation();
+
     this.modalCtrl.create('ShareQrcodePage', { company: comp }).present();
   }
 
@@ -76,6 +80,10 @@ export class HomePage {
 
   viewSalary() {
     this.app.getRootNavs()[0].push('SalaryPage', { profile: this.channel });
+  }
+
+  viewJobs(comp) {
+    this.app.getRootNavs()[0].push('JobListPage', { company: comp });
   }
 
   newItem() {

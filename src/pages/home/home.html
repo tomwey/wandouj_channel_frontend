@@ -36,14 +36,14 @@
     <h2 class="title">人力公司推荐</h2>
     <div class="company-list">
       <ion-list>
-        <ion-item *ngFor="let comp of companies">
+        <ion-item *ngFor="let comp of companies" tappable (click)="viewJobs(comp);">
           <ion-avatar item-left>
             <img [src]="comp.logo">
           </ion-avatar>
           <h2 class="name">{{comp.alias_name || comp.name}}</h2>
           <p class="comp-name">{{comp.name}}</p>
-          <button ion-button small outline (click)="copy(comp);">复制链接</button>
-          <button ion-button small outline (click)="share(comp);">分享二维码</button>
+          <button ion-button small outline (click)="copy($event,comp);">复制链接</button>
+          <button ion-button small outline (click)="share($event,comp);">分享二维码</button>
         </ion-item>
       </ion-list>
     </div>
