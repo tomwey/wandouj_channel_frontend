@@ -1,0 +1,19 @@
+<!--
+  Generated template for the AppliesPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header no-border>
+
+  <ion-navbar color="primary">
+    <ion-title>近期报名</ion-title>
+    <ion-buttons end>
+      <button ion-button>全部报名</button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <recent-dates-bar [datesData]="datesData" (onSelectDate)="selectDate($event);"></recent-dates-bar>
+</ion-content>

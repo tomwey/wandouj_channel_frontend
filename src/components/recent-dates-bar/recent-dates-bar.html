@@ -1,0 +1,9 @@
+<div class="dates-bar" *ngIf="datesData.length > 0">
+  <div class="date-item" tappable (click)="selectDate(date);" *ngFor="let date of datesData;let i = index;">
+    <div class="weekday">{{ i == 0 ? "今天" : date.name}}</div>
+    <div class="day-wrap" [class.selected]="date.date == currentDate" [class.has-data]="date.has_data">
+      <div class="day">{{date.day}}</div>
+      <div class="dot"></div>
+    </div>
+  </div>
+</div>

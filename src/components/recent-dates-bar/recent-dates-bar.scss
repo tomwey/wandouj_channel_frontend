@@ -1,0 +1,63 @@
+recent-dates-bar {
+    .dates-bar {
+        padding: 10px;
+        display: flex;
+        .date-item {
+            flex: 1;
+            text-align: center;
+            // border: 1px solid #ccc;
+            font-size: 14px;
+            color: #999;
+            margin-right: 10px;
+            &:last-child {
+                margin-right: 0;
+            }
+
+            .day-wrap {
+                width: 32px;
+                height: 32px;
+                // line-height: 40px;
+                text-align: center;
+                // background: red;
+                padding: 5px;
+                border-radius: 50%;
+                // margin-top: 10px;
+                margin: 0 auto;
+                color: #999;
+                
+                &.selected {
+                    background: color($colors, primary);
+                    .day {
+                        color: #fff!important;
+                    }
+                    .dot {
+                        background: #fff!important;
+                    }
+                }
+
+                &.has-data {
+                    .day {
+                        color: #333;
+                        // margin-top: 1px;
+                    }
+                    .dot {
+                        background: color($colors,primary);
+                    }
+                }
+
+                .day {
+                    // color: #333;
+                    margin-top: 1px;
+                }
+                .dot {
+                    
+                    width: 4px;
+                    height: 4px;
+                    margin: 2px auto 0;
+                    border-radius: 50%;
+                    // background: color($colors,primary);
+                }
+            }
+        }
+    }
+}
