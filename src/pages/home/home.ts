@@ -4,6 +4,7 @@ import { /*IonicPage, */NavController, NavParams, Content, App, Events, AlertCon
 import { iOSFixedScrollFreeze } from '../../provider/iOSFixedScrollFreeze';
 import { Users } from '../../provider/Users';
 import { Tools } from '../../provider/Tools';
+import { jsClipboard } from '../../provider/jsClipboard';
 // import { Tools } from '../../provider/Tools';
 // import { Tools } from '../../provider/Tools';
 
@@ -35,6 +36,7 @@ export class HomePage {
     private users: Users,
     private tools: Tools,
     private events: Events,
+    private jsCopy: jsClipboard,
     private alertCtrl: AlertController,
     private iosFixed: iOSFixedScrollFreeze,
     public navParams: NavParams) {
@@ -55,6 +57,15 @@ export class HomePage {
   callPhone(phone) {
     // alert(phone);
     window.open("tel:" + phone);
+  }
+
+  copy(comp) {
+    this.jsCopy.copy(comp.shop_url);
+    this.tools.showToast("招人链接复制成功，您可以在任何地方直接粘贴");
+  }
+
+  share(comp) {
+    console.log(comp);
   }
 
   viewProfile() {

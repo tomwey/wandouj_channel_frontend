@@ -42,7 +42,8 @@
           </ion-avatar>
           <h2 class="name">{{comp.alias_name || comp.name}}</h2>
           <p class="comp-name">{{comp.name}}</p>
-
+          <button ion-button small outline (click)="copy(comp);">复制链接</button>
+          <button ion-button small outline (click)="share(comp);">分享二维码</button>
         </ion-item>
       </ion-list>
     </div>

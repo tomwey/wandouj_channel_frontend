@@ -22,6 +22,7 @@ import { iOSFixedScrollFreeze } from '../provider/iOSFixedScrollFreeze';
 import { PipesModule } from '../pipes/pipes.module';
 import { ComponentsModule } from '../components/components.module';
 import { TabsPage } from '../pages/tabs/tabs';
+import { jsClipboard } from '../provider/jsClipboard';
 
 @NgModule({
   declarations: [
@@ -60,6 +61,7 @@ import { TabsPage } from '../pages/tabs/tabs';
     ApiService,
     AppManager,
     iOSFixedScrollFreeze,
+    jsClipboard,
   ]
 })
 export class AppModule { }
