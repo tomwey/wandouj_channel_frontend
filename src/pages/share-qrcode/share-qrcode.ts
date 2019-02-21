@@ -43,9 +43,9 @@ export class ShareQrcodePage {
   createQrcodeInfo(comp, callback) {
     let div = document.createElement("div");
     div.style.display = "block";
-    div.style.width = "288px";
+    div.style.width = "200px";
     div.style.background = "#fff";
-    div.style.padding = "20px";
+    div.style.padding = "10px";
     div.style.textAlign = "center";
     div.style.position = "absolute";
     div.style.zIndex = "-10000";
@@ -58,22 +58,31 @@ export class ShareQrcodePage {
 
     let logo = document.createElement("img");
     logo.src = comp.logo;
-    logo.style.width = "48px";
-    logo.style.height = "48px";
+    logo.style.width = "32px";
+    logo.style.height = "32px";
     logo.style.position = "absolute";
     logo.style.zIndex = "100";
     logo.style.left = "50%";
-    logo.style.top = "120px";
-    logo.style.marginLeft = "-24px";
+    logo.style.top = "84px";
+    logo.style.marginLeft = "-16px";
     logo.style.borderRadius = "2px";
 
     div.appendChild(logo);
+
+    let p = document.createElement("p");
+    p.textContent = "长按识别二维码";
+    p.style.marginTop = "2px";
+    p.style.textAlign = "center";
+    p.style.fontSize = "10px";
+    p.style.color = "#999";
+
+    div.appendChild(p);
 
     let h2 = document.createElement("h2");
     h2.textContent = comp.alias_name || comp.name;
     h2.style.marginTop = "10px";
     h2.style.textAlign = "center";
-    h2.style.fontSize = "14px";
+    h2.style.fontSize = "12px";
     h2.style.color = "#333";
 
     div.appendChild(h2);
