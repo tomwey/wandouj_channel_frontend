@@ -68,34 +68,6 @@ export class HomePage {
 
   share(comp) {
     this.modalCtrl.create('ShareQrcodePage', { company: comp }).present();
-    // console.log(comp);
-    // let div = document.createElement("<div>");
-    // div.style.display = "block";
-    // div.style.width = "70%";
-    // div.style.borderRadius = "4px";
-    // div.style.background = "#fff";
-    // div.style.padding = "10px;";
-    // let div = document.createElement("div");
-    // div.style.display = "block";
-    // div.style.width = "100%";
-    // div.style.height = "100%";
-    // div.style.background = "rgba(0,0,0,0.6)";
-    // div.id = "comp-overlap";
-    // div.style.position = "absolute";
-    // div.style.zIndex = "10000";
-    // div.style.textAlign = "center";
-    // document.body.appendChild(div);
-
-    // let img = document.createElement("img");
-    // img.style.width = "100%";
-    // div.appendChild(img);
-    // this.createQrcodeInfo(comp, (imgUrl) => {
-    //   img.src = imgUrl;
-    // });
-
-    // img.src = comp.qrcode_url;
-    // img.style.maxWidth = "200px"
-    // div.append(img);
   }
 
   viewProfile() {
@@ -103,7 +75,7 @@ export class HomePage {
   }
 
   viewSalary() {
-
+    this.app.getRootNavs()[0].push('SalaryPage', { profile: this.channel });
   }
 
   newItem() {

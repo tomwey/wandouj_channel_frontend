@@ -45,15 +45,15 @@ export class SalaryPage {
   }
 
   loadUserData() {
-    this.users.GetUserProfile(false, '')
-      .then(data => {
-        if (data && data['data']) {
-          this.user = data['data'];
-        }
-      })
-      .catch(error => {
+    // this.users.GetUserProfile(false, '')
+    //   .then(data => {
+    //     if (data && data['data']) {
+    this.user = this.navParams.data.profile;
+    //   }
+    // })
+    // .catch(error => {
 
-      });
+    // });
 
   }
 
