@@ -47,6 +47,7 @@ export class ShareQrcodePage {
     div.style.background = "#fff";
     div.style.padding = "10px";
     div.style.textAlign = "center";
+    div.style.borderRadius = "8px";
     div.style.position = "absolute";
     div.style.zIndex = "-10000";
 
