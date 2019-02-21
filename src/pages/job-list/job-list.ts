@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, Events, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { Tools } from '../../provider/Tools';
 import { Users } from '../../provider/Users';
+import { jsClipboard } from '../../provider/jsClipboard';
 
 /**
  * Generated class for the JobListPage page.
@@ -21,17 +22,17 @@ export class JobListPage {
   error: any = null;
   jobs: any = [];
 
+  company: any;
+
   constructor(public navCtrl: NavController,
-    private events: Events,
+    // private events: Events,
     private tools: Tools,
     private users: Users,
-    private alertCtrl: AlertController,
+    private jsCopy: jsClipboard,
+    private modalCtrl: ModalController,
+    // private alertCtrl: AlertController,
     public navParams: NavParams) {
-    this.events.subscribe("reloaddata", () => {
-      this.loadJobs();
-    })
-
-    this.actions = this.navParams.data.actions || {};
+    this.company = this.navParams.data.company;
   }
 
   ionViewDidLoad() {
@@ -42,7 +43,9 @@ export class JobListPage {
   }
 
   loadJobs() {
-    this.users.GetJobs()
+    if (!this.company) return;
+
+    this.users.GetJobs(this.company.id)
       .then(data => {
         this.jobs = data['data'];
         this.error = this.jobs.length === 0 ? '暂无兼职' : null;
@@ -52,43 +55,13 @@ export class JobListPage {
       })
   }
 
-  newItem() {
-    this.navCtrl.push("JobFormPage", { title: "新建兼职" });
+  copy() {
+    this.jsCopy.copy(this.company.shop_url);
+    this.tools.showToast("招人链接复制成功，您可以在任何地方直接粘贴");
   }
 
-  editItem(item) {
-    this.navCtrl.push("JobFormPage", { title: "编辑兼职", job: item });
-  }
-
-  viewPlans(item) {
-    this.navCtrl.push("JobPlanListPage", { job: item });
-  }
-
-  deleteItem(item) {
-    this.alertCtrl.create({
-      title: "删除提示",
-      subTitle: "您确定要删除吗？",
-      buttons: [
-        {
-          role: "Cancel",
-          text: "取消"
-        },
-        {
-          text: "确定",
-          handler: () => {
-            this.users.DeleteJob(item.id)
-              .then(data => {
-                this.tools.showToast("删除成功！");
-                this.loadJobs();
-              })
-              .catch(error => {
-                this.tools.showToast(error.message || "服务器超时，请重试");
-              });
-          }
-        }
-      ]
-    }).present();
-
+  share() {
+    this.modalCtrl.create('ShareQrcodePage', { company: this.company }).present();
   }
 
 }

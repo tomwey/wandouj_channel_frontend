@@ -321,10 +321,10 @@ export class Users {
         });
     }
 
-    GetJobs() {
+    GetJobs(comp_id) {
         return new Promise((resolve, reject) => {
             this.token().then(token => {
-                this.api.GET('manager/jobs', { token: token }, "正在加载...", true)
+                this.api.GET('channel/jobs', { token: token, comp_id: comp_id }, "正在加载...", true)
                     .then(res => {
                         resolve(res);
                     })

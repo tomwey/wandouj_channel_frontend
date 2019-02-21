@@ -8,11 +8,6 @@
 
   <ion-navbar color="primary">
     <ion-title>兼职列表</ion-title>
-    <ion-buttons end *ngIf="actions.can_create">
-      <button ion-button (click)="newItem();">
-        <ion-icon name="ios-add-outline"></ion-icon>新增
-      </button>
-    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
@@ -41,30 +36,19 @@
           <p>需要人数: {{item.need_total}}</p>
           <p>已报名: {{item.joined_total}}</p>
           <p>招人价格: {{item.price}}{{item.unit}}</p>
-          <p>回款价格: {{item.top_price}}{{item.unit}}</p>
           <ion-badge color="{{item.opened ? 'primary' : 'danger'}}">{{item.opened ? "已上线" : "未上线"}}</ion-badge>
         </ion-col>
       </ion-row>
-
-
-      <div class="buttons">
-        <ion-row>
-          <ion-col col-6>
-            <button ion-button outline small (click)="viewPlans(item);">查看兼职计划</button>
-          </ion-col>
-          <ion-col col-6 style="text-align: right;">
-            <button ion-button small (click)="editItem(item);" *ngIf="actions.can_update">编辑</button>
-            <button ion-button color="danger" small (click)="deleteItem(item);" *ngIf="actions.can_delete">删除</button>
-          </ion-col>
-        </ion-row>
-
-
-      </div>
-      <!-- {{item.name}}
-      <ion-note item-right>
-        <button ion-button clear (click)="editItem(item);" *ngIf="actions.can_update">编辑</button>
-        <button ion-button color="danger" clear (click)="deleteItem(item);" *ngIf="actions.can_delete">删除</button>
-      </ion-note> -->
     </ion-item>
   </ion-list>
 </ion-content>
+<ion-footer>
+  <ion-row>
+    <ion-col col-6>
+      <button ion-button outline block (click)="copy();">复制链接</button>
+    </ion-col>
+    <ion-col col-6>
+      <button ion-button block (click)="share();">分享二维码</button>
+    </ion-col>
+  </ion-row>
+</ion-footer>
