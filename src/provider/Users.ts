@@ -52,10 +52,10 @@ export class Users {
         return this.api.GET('p/' + slug, null);
     }
 
-    GetUserHomeData(work_date) {
+    GetUserHomeData() {
         return new Promise((resolve, reject) => {
             this.token().then(token => {
-                this.api.GET('gwc/user/home', { token: token, work_date: work_date, key: this._getKeyParam() }, "加载中...", true)
+                this.api.GET('channel/portal/home', { token: token, key: this._getKeyParam() }, "加载中...", true)
                     .then(res => {
                         resolve(res);
                     })
@@ -486,8 +486,8 @@ export class Users {
     SaveProfile(params) {
         return new Promise((resolve, reject) => {
             this.token().then(token => {
-                // params['token'] = token;
-                this.api.POST('gwc/user/save_profile', { token: token, payload: JSON.stringify(params) })
+                params['token'] = token;
+                this.api.POST('channel/portal/save_profile', params, '正在提交', true)
                     .then(res => {
                         resolve(res);
                     })
@@ -529,7 +529,7 @@ export class Users {
 
     Login(mobile, code) {
         return new Promise((resolve, reject) => {
-            this.api.POST('gwc/user/login', {
+            this.api.POST('channel/portal/login', {
                 mobile: mobile,
                 code: code,
                 key: this._getKeyParam()

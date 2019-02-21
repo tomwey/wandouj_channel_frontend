@@ -46,7 +46,7 @@ export class LoginPage {
       mobile_field: "mobile",
       seconds: 59,
       get_code_text: "获取验证码",
-      code_type: 1
+      code_type: 3
     }
   ];
 
@@ -78,11 +78,11 @@ export class LoginPage {
       .then(data => {
         console.log(data);
         // this.checkProfile();
-        // if (!data['pid']) {
-        //   this.app.getRootNavs()[0].setRoot('ProfilePage');
-        // } else {
-        //   this.app.getRootNavs()[0].setRoot(TabsPage);
-        // }
+        if (!data['pay_account']) {
+          this.app.getRootNavs()[0].setRoot('ProfilePage', { profile: data });
+        } else {
+          this.app.getRootNavs()[0].setRoot(TabsPage);
+        }
       })
       .catch(error => {
         this.tools.showToast(error);

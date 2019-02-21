@@ -242,7 +242,7 @@ export class ApiService {
       signStr += value + ':';
     })
 
-    signStr += API_KEY;
+    signStr += COMM_API_KEY;
 
     return Md5.hashStr(signStr, false).toString();
   }

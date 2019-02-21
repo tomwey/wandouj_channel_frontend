@@ -7,13 +7,13 @@
 <ion-header no-border>
 
   <ion-navbar color="primary">
-    <ion-title>个人资料</ion-title>
+    <ion-title>账号资料</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 <ion-content>
-  <form-fields [controls]="controls" (onControlSelect)="controlSelected($event);"></form-fields>
+  <form-fields [controls]="controls"></form-fields>
   <div padding>
     <button ion-button block (click)="save();">保存</button>
   </div>

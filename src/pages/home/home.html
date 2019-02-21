@@ -12,51 +12,46 @@
     </ion-refresher-content>
   </ion-refresher> -->
 
-  <div class="caption" *ngIf="company">
-    <div class="company">
-      <div class="avatar">
-        <img [src]="company.logo">
-      </div>
-      <div class="info">
-        <h2 class="comp-name">{{company.alias_name}}</h2>
-        <div class="accounts">
-          <p class="name">公司名字：{{company.name}}</p>
-          <p class="mobile">联系电话：{{company.phone}}&emsp;<span class="phone-btn" tappable
-              (click)="callPhone(company.phone);">
-              <ion-icon name="ios-call-outline"></ion-icon>
-            </span></p>
-        </div>
-      </div>
+  <div class="caption" *ngIf="!!channel">
+    <div class="channel">
+      <ion-item tappable (click)="viewProfile();">
+        <ion-avatar item-left>
+          <img [src]="channel.avatar || 'assets/imgs/default_avatar.png'">
+        </ion-avatar>
+        <h2 class="name">{{channel.name || 'ID: ' + channel.id}}</h2>
+        <p class="mobile">登录手机: {{channel.mobile}}</p>
+        <ion-icon name="ios-arrow-forward-outline" item-right></ion-icon>
+      </ion-item>
+      <ion-item>
+        <h2 class="name">我的收入：{{channel.total_money}}</h2>
+        <button item-right ion-button (click)="viewSalary()">明细</button>
+      </ion-item>
     </div>
+    <div class="earn-box">
 
-  </div>
-  <div class="latest-jobs">
-    <h2 class="name">近期工作</h2>
-    <div class="dates-bar">
-      <div class="date-item" tappable (click)="selectDate(date);" *ngFor="let date of jobDates;let i = index;">
-        <div class="weekday">{{ i == 0 ? "今天" : date.name}}</div>
-        <div class="day-wrap" [class.selected]="date.date == currentDate" [class.has-job]="date.has_job"
-          [class.has-apply]="date.has_apply">
-          <div class="day">{{date.day}}</div>
-          <div class="dot"></div>
-        </div>
-      </div>
     </div>
   </div>
 
-  <div class="my-jobs" *ngIf="my_jobs.length > 0">
-    <h2 class="title">我的工作</h2>
-    <div class="job-list">
+  <div class="companies box">
+    <h2 class="title">人力公司推荐</h2>
+    <div class="company-list">
       <ion-list>
-        <div *ngFor="let job of my_jobs" tappable (click)="selectJob(job);">
-          <job-item [job]="job"></job-item>
-        </div>
+        <ion-item *ngFor="let comp of companies">
+          <ion-avatar item-left>
+            <img [src]="comp.logo">
+          </ion-avatar>
+          <h2 class="name">{{comp.alias_name || comp.name}}</h2>
+          <p class="comp-name">{{comp.name}}</p>
+
+        </ion-item>
       </ion-list>
     </div>
   </div>
-  <div class="jobs" *ngIf="jobs">
-    <h2 class="title">正在招募</h2>
-    <div class="job-list">
+  <div class="splitor"></div>
+  <div class="box children" *ngIf="channel && channel.has_child">
+    <h2 class="title">下级代理</h2>
+    <div class="empty-box" *ngIf="children.length === 0">暂无下级代理</div>
+    <div class="child-list">
       <ion-list>
         <div *ngFor="let job of jobs" tappable (click)="selectJob(job);">
           <job-item [job]="job"></job-item>
