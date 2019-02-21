@@ -1,10 +1,11 @@
 import { Component, ViewChild } from '@angular/core';
-import { /*IonicPage, */NavController, NavParams, Content, App, Events, AlertController } from 'ionic-angular';
+import { /*IonicPage, */NavController, NavParams, Content, App, Events, AlertController, ModalController } from 'ionic-angular';
 // import { ApiService } from '../../provider/api-service';
 import { iOSFixedScrollFreeze } from '../../provider/iOSFixedScrollFreeze';
 import { Users } from '../../provider/Users';
 import { Tools } from '../../provider/Tools';
 import { jsClipboard } from '../../provider/jsClipboard';
+// import { Body } from '@angular/http/src/body';
 // import { Tools } from '../../provider/Tools';
 // import { Tools } from '../../provider/Tools';
 
@@ -37,6 +38,7 @@ export class HomePage {
     private tools: Tools,
     private events: Events,
     private jsCopy: jsClipboard,
+    private modalCtrl: ModalController,
     private alertCtrl: AlertController,
     private iosFixed: iOSFixedScrollFreeze,
     public navParams: NavParams) {
@@ -65,7 +67,35 @@ export class HomePage {
   }
 
   share(comp) {
-    console.log(comp);
+    this.modalCtrl.create('ShareQrcodePage', { company: comp }).present();
+    // console.log(comp);
+    // let div = document.createElement("<div>");
+    // div.style.display = "block";
+    // div.style.width = "70%";
+    // div.style.borderRadius = "4px";
+    // div.style.background = "#fff";
+    // div.style.padding = "10px;";
+    // let div = document.createElement("div");
+    // div.style.display = "block";
+    // div.style.width = "100%";
+    // div.style.height = "100%";
+    // div.style.background = "rgba(0,0,0,0.6)";
+    // div.id = "comp-overlap";
+    // div.style.position = "absolute";
+    // div.style.zIndex = "10000";
+    // div.style.textAlign = "center";
+    // document.body.appendChild(div);
+
+    // let img = document.createElement("img");
+    // img.style.width = "100%";
+    // div.appendChild(img);
+    // this.createQrcodeInfo(comp, (imgUrl) => {
+    //   img.src = imgUrl;
+    // });
+
+    // img.src = comp.qrcode_url;
+    // img.style.maxWidth = "200px"
+    // div.append(img);
   }
 
   viewProfile() {
@@ -115,7 +145,7 @@ export class HomePage {
     return new Promise((resolve) => {
       this.users.GetUserHomeData()
         .then(data => {
-          console.log(data);
+          // console.log(data);
           let result = data['data'];
           this.channel = result['channel'];
           this.companies = result['companies'];

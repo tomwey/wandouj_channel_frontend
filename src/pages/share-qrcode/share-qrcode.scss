@@ -1,0 +1,17 @@
+page-share-qrcode {
+    .share-tip {
+        font-size: 14px;
+        text-align: center;
+        color: #333;
+        ion-icon {
+            vertical-align: -2px;
+            font-weight: bold;
+        }
+    }
+
+    .share-box {
+        text-align: center;
+        width: 70%;
+        margin: 30px auto 0;
+    }
+}
