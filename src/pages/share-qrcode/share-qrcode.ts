@@ -43,9 +43,9 @@ export class ShareQrcodePage {
   createQrcodeInfo(comp, callback) {
     let div = document.createElement("div");
     div.style.display = "block";
-    div.style.width = "200px";
+    div.style.width = "288px";
     div.style.background = "#fff";
-    div.style.padding = "10px";
+    div.style.padding = "20px";
     div.style.textAlign = "center";
     div.style.borderRadius = "8px";
     div.style.position = "absolute";
@@ -59,14 +59,14 @@ export class ShareQrcodePage {
 
     let logo = document.createElement("img");
     logo.src = comp.logo;
-    logo.style.width = "32px";
-    logo.style.height = "32px";
+    logo.style.width = "58px";
+    logo.style.height = "58px";
     logo.style.position = "absolute";
     logo.style.zIndex = "100";
     logo.style.left = "50%";
-    logo.style.top = "84px";
-    logo.style.marginLeft = "-16px";
-    logo.style.borderRadius = "2px";
+    logo.style.top = "115px";
+    logo.style.marginLeft = "-29px";
+    logo.style.borderRadius = "4px";
 
     div.appendChild(logo);
 
@@ -74,7 +74,7 @@ export class ShareQrcodePage {
     p.textContent = "长按识别二维码";
     p.style.marginTop = "2px";
     p.style.textAlign = "center";
-    p.style.fontSize = "10px";
+    p.style.fontSize = "12px";
     p.style.color = "#999";
 
     div.appendChild(p);
@@ -83,16 +83,16 @@ export class ShareQrcodePage {
     h2.textContent = comp.alias_name || comp.name;
     h2.style.marginTop = "10px";
     h2.style.textAlign = "center";
-    h2.style.fontSize = "12px";
+    h2.style.fontSize = "16px";
     h2.style.color = "#333";
 
     div.appendChild(h2);
 
     document.body.appendChild(div);
 
-    html2canvas(div, { useCORS: true }).then(canvas => {
+    html2canvas(div, { useCORS: true, scale: 1.0 }).then(canvas => {
       if (callback) {
-        callback(canvas.toDataURL("image/png"));
+        callback(canvas.toDataURL("image/jpeg"));
       }
       document.body.removeChild(div);
     });
