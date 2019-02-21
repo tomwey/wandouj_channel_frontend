@@ -49,13 +49,22 @@
   </div>
   <div class="splitor"></div>
   <div class="box children" *ngIf="channel && channel.has_child">
-    <h2 class="title">下级代理</h2>
+    <h2 class="title">下级代理<span class="new-channel" tappable (click)="newItem()">
+        <ion-icon name="ios-add-outline"></ion-icon> 新增
+      </span></h2>
     <div class="empty-box" *ngIf="children.length === 0">暂无下级代理</div>
     <div class="child-list">
       <ion-list>
-        <div *ngFor="let job of jobs" tappable (click)="selectJob(job);">
-          <job-item [job]="job"></job-item>
-        </div>
+        <ion-item *ngFor="let child of children">
+          <p class="child-id">ID {{child.cid}}</p>
+          <h2 class="name">{{child.name}}</h2>
+          <p class="mobile">登录手机: {{child.mobile}}</p>
+
+          <div item-right>
+            <button ion-button small (click)="editItem(child)">编辑</button><br>
+            <button ion-button small color="danger" (click)="deleteItem(child)">删除</button>
+          </div>
+        </ion-item>
       </ion-list>
     </div>
   </div>

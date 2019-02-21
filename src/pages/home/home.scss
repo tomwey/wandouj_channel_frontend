@@ -72,15 +72,48 @@ page-home {
         .title {
             margin: 0;
             // background: #f2f2f2;
-            padding: 10px 15px;
+            padding: 15px;
             font-size: 12px;
             color: #333;
             border-bottom: 0.55px solid #f2f2f2;
+
+            // clear: both;
+            position: relative;
+            .new-channel {
+                // float: right;
+                position: absolute;
+                right: 5px;
+                top: 7px;
+                display: inline-block;
+                color: color($colors, primary);
+                font-size: 14px;
+                height: 30px;
+                line-height: 30px;
+                padding: 0 10px;
+                font-weight: normal;
+                vertical-align: middle;
+                ion-icon {
+                    font-size: 20px;
+                    font-weight: 700;
+                    vertical-align: -2px;
+                }
+            }
             // text-align: center;
         }
         .empty-box {
             padding: 30px;
             text-align: center;
+            color: #999;
+        }
+    }
+
+    .child-list {
+        .name {
+            font-size: 14px;
+            color: #333;
+        }
+        .child-id, .mobile {
+            font-size: 12px;
             color: #999;
         }
     }

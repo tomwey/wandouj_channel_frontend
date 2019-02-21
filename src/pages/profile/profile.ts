@@ -40,13 +40,13 @@ export class ProfilePage {
     }
   ];
 
-  profile: any = null;
+  profile: any = {};
   constructor(public navCtrl: NavController,
     private users: Users,
     private tools: Tools,
     private app: App,
     private events: Events,
-    private modalCtrl: ModalController,
+    // private modalCtrl: ModalController,
     public navParams: NavParams) {
 
     this.profile = this.navParams.data.profile;

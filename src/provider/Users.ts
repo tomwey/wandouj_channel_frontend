@@ -68,6 +68,39 @@ export class Users {
         });
     }
 
+    SaveChannel(params) {
+        return new Promise((resolve, reject) => {
+            this.token().then(token => {
+                params['token'] = token;
+                this.api.POST('channel/portal/save_child', params, "正在提交", true)
+                    .then(res => {
+                        resolve(res);
+                    })
+                    .catch(error => {
+                        reject(error);
+                    })
+            })
+                .catch(error => { });
+            // 
+        });
+    }
+
+    DeleteChannel(id) {
+        return new Promise((resolve, reject) => {
+            this.token().then(token => {
+                this.api.POST('channel/portal/delete_child', { token: token, ccid: id }, "正在提交", true)
+                    .then(res => {
+                        resolve(res);
+                    })
+                    .catch(error => {
+                        reject(error);
+                    })
+            })
+                .catch(error => { });
+            // 
+        });
+    }
+
     GetAccountInfo() {
         return new Promise((resolve, reject) => {
             this.token().then(token => {

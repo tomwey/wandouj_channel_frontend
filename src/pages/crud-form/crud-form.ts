@@ -32,17 +32,11 @@ export class CrudFormPage {
       subtype: 'tel',
       required: true,
       editable: false
-    },
-    {
-      id: 'is_emp',
-      name: "是否是内部员工",
-      type: 8
     }
   ];
 
   item: any = null;
   title: any;
-  resource: any;
 
   constructor(public navCtrl: NavController,
     private tools: Tools,
@@ -53,15 +47,6 @@ export class CrudFormPage {
       this.item = this.navParams.data.item;
     }
     this.title = this.navParams.data.title;
-    this.resource = this.navParams.data.resource;
-
-    if (this.controls.length > 2) {
-      if (this.resource == "contacts") {
-        this.controls[2].value = false;
-      } else if (this.resource == "channels") {
-        this.controls[2].value = true;
-      }
-    }
 
     if (this.item) {
       this.controls.forEach(control => {
@@ -81,7 +66,7 @@ export class CrudFormPage {
       id = this.item.id;
     }
 
-    let params = { id: id };
+    let params = { ccid: id };
 
     for (let i = 0; i < this.controls.length; i++) {
       const control = this.controls[i];
@@ -99,10 +84,10 @@ export class CrudFormPage {
 
     }
 
-    this.users.SaveContactsOrChannels(this.resource, params)
+    this.users.SaveChannel(params)
       .then(data => {
         this.tools.showToast("保存成功！");
-        this.events.publish("reloaddata");
+        this.events.publish("reloadprofile");
         this.navCtrl.pop();
       })
       .catch(error => {
