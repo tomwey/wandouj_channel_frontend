@@ -22,10 +22,30 @@
         <p class="mobile">登录手机: {{channel.mobile}}</p>
         <ion-icon name="ios-arrow-forward-outline" item-right></ion-icon>
       </ion-item>
-      <ion-item>
-        <h2 class="name">我的收入：{{channel.total_money}}</h2>
-        <button item-right ion-button (click)="viewSalary()">明细</button>
-      </ion-item>
+      <!-- <ion-item> -->
+      <!-- <h2 class="name">我的收入：{{channel.total_money}}</h2>
+        <button item-right ion-button (click)="viewSalary()">明细</button> -->
+      <!-- </ion-item> -->
+      <div class="salary">
+        <ion-row>
+          <ion-col col-4>
+            <div class="money">
+              <div class="label">今日收入</div>
+              <div class="value">{{channel.today_money}}<span class="unit">元</span></div>
+            </div>
+          </ion-col>
+          <ion-col col-5 style="text-align: center;">
+            <div class="money">
+              <div class="label">总收入</div>
+              <div class="value">{{channel.total_money}}<span class="unit">元</span></div>
+            </div>
+          </ion-col>
+          <ion-col col-3 style="text-align: right">
+            <button class="view-btn" ion-button (click)="viewSalary()">明细</button>
+          </ion-col>
+        </ion-row>
+      </div>
+
     </div>
     <div class="earn-box">
 

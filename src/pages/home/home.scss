@@ -117,4 +117,33 @@ page-home {
             color: #999;
         }
     }
+
+    .salary {
+        padding: 0 15px;
+        ion-row, ion-col {
+            margin: 0;
+            padding: 0;
+        }
+
+        .money {
+            // text-align: left;
+            .label {
+                font-size: 12px;
+            }
+            .value {
+                font-size: 18px;
+                font-family: 'PingFang SC', Arial, Helvetica, sans-serif;
+                .unit {
+                    font-size: 10px;
+                    padding-left: 3px;
+                    vertical-align: middle;
+                }
+            }
+
+        }
+
+        .button-ios {
+            font-size: 14px;
+        }
+    }
 }
