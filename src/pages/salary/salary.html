@@ -9,33 +9,14 @@
   <ion-navbar color="primary">
     <ion-title>我的工资</ion-title>
   </ion-navbar>
-
+  <div class="filter-bar-wrap">
+    <filter-bars [filterItems]="filterItems" (onSelectFilterItem)="selectedFilterItem($event);"></filter-bars>
+  </div>
 </ion-header>
 
 <ion-content>
-  <div class="salary-caption">
-    <div class="senting">
-      <h1><span class="unit">¥</span>{{ user.unpayed_money || '0.00' }}</h1>
-      <p class="label">待发工资</p>
-    </div>
-    <ion-row>
-      <ion-col col-6>
-        <div class="salary-stat">
-          <p class="label">已发工资</p>
-          <h3><span class="unit">¥</span>{{ user.payed_money || '0.00' }}</h3>
-        </div>
-      </ion-col>
-      <ion-col col-6>
-        <div class="salary-stat">
-          <p class="label">工资总额</p>
-          <h3><span class="unit">¥</span>{{ user.total_money || '0.00' }}</h3>
-        </div>
-      </ion-col>
-    </ion-row>
-  </div>
-
   <div class="salary-data">
-    <filter-bars [filterItems]="filterItems" (onSelectFilterItem)="selectedFilterItem($event);"></filter-bars>
+    <!-- <filter-bars [filterItems]="filterItems" (onSelectFilterItem)="selectedFilterItem($event);"></filter-bars> -->
     <div class="empty-error-box" *ngIf="!!error">
       {{error}}
     </div>
