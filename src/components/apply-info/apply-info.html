@@ -1,0 +1,30 @@
+<div class="apply">
+  <div class="base-info">
+    <div class="main"><span class="name">{{item.user.name}}</span>
+      <span class="mobile">{{item.user.mobile}}</span>
+      <span class="idcard" *ngIf="!!item.user.idcard">{{item.user.idcard}}</span>
+    </div>
+    <div class="other">
+      <ion-badge>{{item.user.sex}}</ion-badge>
+      <ion-badge>{{item.user.age}}岁</ion-badge>
+      <ion-badge *ngIf="!!item.user.college">{{item.user.college}}</ion-badge>
+      <ion-badge *ngIf="!!item.user.specialty">{{item.user.specialty}}</ion-badge>
+    </div>
+  </div>
+  <div class="job">
+    <p class="name">{{item.job.name}}</p>
+    <p class="project-name">{{item.job.project_name}}</p>
+  </div>
+
+  <div class="apply-info">
+    <div class="time-box">
+      <p class="time">报名时间: {{item.apply_time || "还未签到"}}
+      </p>
+      <p class="time">工作时间: {{item.work_time_range}}</p>
+      <p class="time">签到时间: {{item.checkin_time || "还未签到"}}<span *ngIf="item.is_late" class="be-late">迟到</span>
+      </p>
+      <p class="time">签退时间: {{item.checkout_time || "还未签退"}}<span *ngIf="item.is_leave_early"
+          class="leave-early">早退</span></p>
+    </div>
+  </div>
+</div>

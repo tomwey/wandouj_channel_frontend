@@ -7,13 +7,31 @@
 <ion-header no-border>
 
   <ion-navbar color="primary">
-    <ion-title>近期报名</ion-title>
-    <ion-buttons end>
-      <button ion-button>全部报名</button>
-    </ion-buttons>
+    <ion-title>兼职报名</ion-title>
   </ion-navbar>
+  <div class="filter-bar-wrap">
+    <filter-bars [filterItems]="filterItems" (onSelectFilterItem)="selectedFilterItem($event);"></filter-bars>
+  </div>
 </ion-header>
 
 <ion-content>
-  <recent-dates-bar [datesData]="datesData" (onSelectDate)="selectDate($event);"></recent-dates-bar>
+  <div class="empty-error-box" *ngIf="!!error">{{error}}</div>
+  <div class="applies">
+    <virtual-scroller #scroll [items]="applies" [childHeight]="180">
+      <div class="total-box" *ngIf="applies.length > 0">共 {{applies.length}} 人</div>
+      <div class="apply-user" *ngFor="let item of scroll.viewPortItems">
+        <ion-item>
+          <div class="main-content" [class.has-checkbox]="checkState == '0' || checkState == '1'">
+            <span class="custom-checkbox" [class.has-selected]="hasSelectAll || item.cb_selected" tappable
+              (click)="selectItem(item);" *ngIf="checkState == '0' || checkState == '1'">
+              <ion-icon
+                name="{{(hasSelectAll || item.cb_selected) ? 'md-checkmark-circle' : 'ios-radio-button-off-outline'}}">
+              </ion-icon>
+            </span>
+            <apply-info [item]="item"></apply-info>
+          </div>
+        </ion-item>
+      </div>
+    </virtual-scroller>
+  </div>
 </ion-content>

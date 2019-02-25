@@ -1,0 +1,93 @@
+apply-info {
+    .apply {
+        // border-bottom: 0.55px solid #f1f1f1;
+        .base-info {
+            font-size: 0;
+            color: #333;
+            .name,.mobile,.idcard {
+                font-size: 14px;
+                line-height: 18px;
+                vertical-align: middle;
+                font-weight: 500;
+            }
+            .name {
+                display: inline-block;
+                width: 55px;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                white-space: nowrap;
+                
+            }
+            .mobile {
+                padding-right: 6px;
+            }
+            .sex-icon {
+                vertical-align: -6px;
+                padding-right: 5px;
+                .male {
+                    color: color($colors, primary);
+                }
+                .female {
+                    color: rgb(214, 118, 134);
+                }
+            }
+            
+            .other {
+                margin-top: 5px;
+                // font-size: 12px;
+                .badge-ios {
+                    font-size: 12px;
+                    margin-right: 5px;
+                    background: #f2f2f2;
+                    color: #666;
+                    font-weight: normal;
+                }
+            }
+        }
+        .idcard {
+            font-size: 14px;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        .job  {
+            margin-top: 5px;
+            .name, .project-name {
+                font-size: 12px;
+                margin: 0;
+                padding: 0;
+            }
+
+            .name {
+                color: #333;
+            }
+            
+            .project-name {
+                color: #999;
+            }
+        }
+
+        .apply-info {
+            ion-row, ion-col {
+                margin: 0;
+                padding: 0;
+            }
+            background: rgba(247,246,246, 0.6);
+            padding: 5px;
+            margin-top: 5px;
+            .time {
+                font-size: 12px;
+                color: #666;
+                margin: 0;
+                padding: 0;
+            }
+
+            .be-late, .leave-early {
+                padding-left: 10px;
+                color: color($colors, danger);
+            }
+        }
+
+    }
+}

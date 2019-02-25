@@ -554,6 +554,22 @@ export class Users {
         });
     }
 
+    GetApplies(date, state, merch_id, job_id) {
+        return new Promise((resolve, reject) => {
+            this.token().then(token => {
+                this.api.GET('channel/applies', { token: token, state: state, date: date, comp_id: merch_id, job_id: job_id }, "加载中...", true)
+                    .then(res => {
+                        resolve(res);
+                    })
+                    .catch(error => {
+                        reject(error);
+                    })
+            })
+                .catch(error => { });
+            // 
+        });
+    }
+
     SaveProfile(params) {
         return new Promise((resolve, reject) => {
             this.token().then(token => {

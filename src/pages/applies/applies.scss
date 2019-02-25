@@ -1,6 +1,27 @@
 page-applies {
-    .segment-box {
-        background: #f2f2f2;
-        padding: 15px 30px;
+    .applies {
+        width: 100%;
+        height: 100%;
+        virtual-scroller {
+            width: 100%;
+            height: 100%;
+        }
+
+        .total-box {
+            padding: 10px;
+            text-align: center;
+            font-size: 14px;
+            color: #888;
+        }
+
+        .item-ios.item-block .item-inner {
+            border-bottom: 0;
+        }
+        .item-ios {
+            border-bottom: 0.55px solid #f1f1f1;
+            // &:last-child {
+            //     border-bottom: 0;
+            // }
+        }
     }
 }
