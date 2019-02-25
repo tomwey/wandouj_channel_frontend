@@ -118,32 +118,45 @@ page-home {
         }
     }
 
-    .salary {
-        padding: 0 15px;
-        ion-row, ion-col {
-            margin: 0;
-            padding: 0;
-        }
-
-        .money {
-            // text-align: left;
-            .label {
-                font-size: 12px;
+    .salary-wrap {
+        display: flex;
+        .salary {
+            flex: 1;
+            padding: 0 15px 5px;
+            ion-row, ion-col {
+                margin: 0;
+                padding: 0;
             }
-            .value {
-                font-size: 18px;
-                font-family: 'PingFang SC', Arial, Helvetica, sans-serif;
-                .unit {
-                    font-size: 10px;
-                    padding-left: 3px;
-                    vertical-align: middle;
+    
+            .money {
+                // text-align: left;
+                .label {
+                    font-size: 12px;
                 }
+                .value {
+                    font-size: 18px;
+                    font-family: 'PingFang SC', Arial, Helvetica, sans-serif;
+                    .unit {
+                        font-size: 10px;
+                        padding-left: 3px;
+                        vertical-align: middle;
+                    }
+                }
+    
             }
-
         }
 
-        .button-ios {
-            font-size: 14px;
+        .view-salary {
+            flex: 0 0 50px;
+            width: 50px;
+            padding-right: 5px;
+            box-sizing: content-box;
+            .view-btn {
+                display: inline-block;
+                padding: 10px;
+            }
         }
     }
+
+    
 }

@@ -26,24 +26,32 @@
       <!-- <h2 class="name">我的收入：{{channel.total_money}}</h2>
         <button item-right ion-button (click)="viewSalary()">明细</button> -->
       <!-- </ion-item> -->
-      <div class="salary">
-        <ion-row>
-          <ion-col col-4>
-            <div class="money">
-              <div class="label">今日收入</div>
-              <div class="value">{{channel.today_money}}<span class="unit">元</span></div>
-            </div>
-          </ion-col>
-          <ion-col col-5 style="text-align: center;">
-            <div class="money">
-              <div class="label">总收入</div>
-              <div class="value">{{channel.total_money}}<span class="unit">元</span></div>
-            </div>
-          </ion-col>
-          <ion-col col-3 style="text-align: right">
-            <button class="view-btn" ion-button (click)="viewSalary()">明细</button>
-          </ion-col>
-        </ion-row>
+      <div class="salary-wrap">
+        <div class="salary">
+          <ion-row>
+            <ion-col col-4>
+              <div class="money">
+                <div class="label">今日收入</div>
+                <div class="value">{{channel.today_money}}<span class="unit">元</span></div>
+              </div>
+            </ion-col>
+            <ion-col col-4>
+              <div class="money">
+                <div class="label">总收入</div>
+                <div class="value">{{channel.total_money}}<span class="unit">元</span></div>
+              </div>
+            </ion-col>
+            <ion-col col-4>
+              <div class="money">
+                <div class="label">待结算</div>
+                <div class="value">{{channel.unpayed_money}}<span class="unit">元</span></div>
+              </div>
+            </ion-col>
+          </ion-row>
+        </div>
+        <div class="view-salary">
+          <span class="view-btn" tappable (click)="viewSalary()">明细</span>
+        </div>
       </div>
 
     </div>
