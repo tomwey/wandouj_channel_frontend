@@ -44,6 +44,38 @@ export class Users {
         return this.api.POST('u/auth_bind', { code: code, provider: provider, rid });
     }
 
+    GetCommCompanies() {
+        return new Promise((resolve, reject) => {
+            this.token().then(token => {
+                this.api.GET('filter/companies', { token: token, type: 2 }, "加载中...", true)
+                    .then(res => {
+                        resolve(res);
+                    })
+                    .catch(error => {
+                        reject(error);
+                    })
+            })
+                .catch(error => { });
+            // 
+        });
+    }
+
+    GetCommJobs(comp_id) {
+        return new Promise((resolve, reject) => {
+            this.token().then(token => {
+                this.api.GET('filter/jobs', { token: token, type: 2, comp_id: comp_id }, "加载中...", true)
+                    .then(res => {
+                        resolve(res);
+                    })
+                    .catch(error => {
+                        reject(error);
+                    })
+            })
+                .catch(error => { });
+            // 
+        });
+    }
+
     GetAuthUrl(url): Promise<any> {
         return this.api.GET('u/auth', { url: url });
     }
