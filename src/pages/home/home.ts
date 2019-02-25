@@ -74,6 +74,12 @@ export class HomePage {
     this.modalCtrl.create('ShareQrcodePage', { company: comp }).present();
   }
 
+  unitBy(money) {
+    money = parseFloat(money);
+    if (money < 10000.0) return '元';
+    return '万';
+  }
+
   viewProfile() {
     this.app.getRootNavs()[0].push('ProfilePage', { profile: this.channel });
   }

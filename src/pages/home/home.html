@@ -32,19 +32,25 @@
             <ion-col col-4>
               <div class="money">
                 <div class="label">今日收入</div>
-                <div class="value">{{channel.today_money}}<span class="unit">元</span></div>
+                <div class="value">{{channel.today_money | formatWan}}<span
+                    class="unit">{{unitBy(channel.today_money)}}</span>
+                </div>
               </div>
             </ion-col>
             <ion-col col-4>
               <div class="money">
                 <div class="label">总收入</div>
-                <div class="value">{{channel.total_money}}<span class="unit">元</span></div>
+                <div class="value">{{channel.total_money | formatWan}}<span
+                    class="unit">{{unitBy(channel.total_money)}}</span>
+                </div>
               </div>
             </ion-col>
             <ion-col col-4>
               <div class="money">
                 <div class="label">待结算</div>
-                <div class="value">{{channel.unpayed_money}}<span class="unit">元</span></div>
+                <div class="value">{{channel.unpayed_money | formatWan}}<span
+                    class="unit">{{unitBy(channel.unpayed_money)}}</span>
+                </div>
               </div>
             </ion-col>
           </ion-row>
