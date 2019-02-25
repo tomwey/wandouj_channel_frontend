@@ -120,6 +120,18 @@ export class AppliesPage {
     }
   }
 
+  colorBy(item) {
+    if (item.state == 'pending') {
+      return 'gray';
+    }
+
+    if (item.state == 'approved' || item.state == 'checkined' || item.state == 'checkouted') {
+      return 'primary';
+    }
+
+    return 'danger';
+  }
+
   loadApplies() {
     let date = this.filterItems[0].value;
     let state = (this.filterItems[1].value || {}).value;

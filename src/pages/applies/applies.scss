@@ -7,6 +7,12 @@ page-applies {
             height: 100%;
         }
 
+        .card-ios {
+            margin: 0;
+            width: 100%;
+            margin-bottom: 1px;
+        }
+
         .total-box {
             padding: 10px;
             text-align: center;
@@ -17,11 +23,84 @@ page-applies {
         .item-ios.item-block .item-inner {
             border-bottom: 0;
         }
-        .item-ios {
-            border-bottom: 0.55px solid #f1f1f1;
-            // &:last-child {
-            //     border-bottom: 0;
-            // }
+        // .item-ios {
+        //     border-bottom: 0.55px solid #f1f1f1;
+        //     // &:last-child {
+        //     //     border-bottom: 0;
+        //     // }
+        // }
+
+        .base-info {
+            font-size: 0;
+            color: #333;
+            padding: 15px;
+            .name,.mobile,.idcard {
+                font-size: 14px;
+                line-height: 18px;
+                vertical-align: middle;
+                font-weight: 500;
+            }
+            .name {
+                display: inline-block;
+                width: 55px;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                white-space: nowrap;
+                
+            }
+            .mobile {
+                padding-right: 6px;
+            }
+            .sex-icon {
+                vertical-align: -6px;
+                padding-right: 5px;
+                .male {
+                    color: color($colors, primary);
+                }
+                .female {
+                    color: rgb(214, 118, 134);
+                }
+            }
+            
+            .other {
+                margin-top: 5px;
+                // font-size: 12px;
+                .badge-ios {
+                    font-size: 12px;
+                    margin-right: 5px;
+                    background: #f2f2f2;
+                    color: #666;
+                    font-weight: normal;
+                }
+            }
+        }
+        .idcard {
+            font-size: 14px;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        .job {
+            // padding: 0 15px;
+            p {
+                font-size: 12px;
+                color: #888;
+                margin: 0;
+                padding: 0;
+            }
+            margin-bottom: -10px;
+        }
+
+        .comp-info {
+            h2 {
+                font-size: 12px;
+                color: #333;
+            }
+            p {
+                font-size: 12px;
+                color: #888;
+            }
         }
     }
 }

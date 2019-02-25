@@ -17,10 +17,37 @@
 <ion-content>
   <div class="empty-error-box" *ngIf="!!error">{{error}}</div>
   <div class="applies">
-    <virtual-scroller #scroll [items]="applies" [childHeight]="180">
+    <virtual-scroller #scroll [items]="applies" [childHeight]="168">
       <div class="total-box" *ngIf="applies.length > 0">共 {{applies.length}} 人</div>
-      <div class="apply-user" *ngFor="let item of scroll.viewPortItems">
-        <ion-item>
+      <ion-card *ngFor="let item of scroll.viewPortItems">
+        <div class="base-info">
+          <div class="main"><span class="name">{{item.user.name}}</span>
+            <span class="mobile">{{item.user.mobile}}</span>
+            <span class="idcard" *ngIf="!!item.user.idcard">{{item.user.idcard}}</span>
+          </div>
+          <div class="other">
+            <ion-badge>{{item.user.sex}}</ion-badge>
+            <ion-badge>{{item.user.age}}岁</ion-badge>
+            <ion-badge *ngIf="!!item.user.college">{{item.user.college}}</ion-badge>
+            <ion-badge *ngIf="!!item.user.specialty">{{item.user.specialty}}</ion-badge>
+          </div>
+        </div>
+        <div class="job">
+          <ion-item>
+            <p>{{item.job.project_name}} | {{item.job.name}}</p>
+            <ion-badge color="{{colorBy(item)}}" item-right>{{item.state_name}}</ion-badge>
+          </ion-item>
+        </div>
+        <ion-item class="comp-info">
+          <ion-avatar item-start>
+            <img [src]="item.job.comp_logo || 'assets/imgs/default_avatar.png'">
+          </ion-avatar>
+          <h2>{{item.job.comp_alias_name}}</h2>
+          <p>{{item.job.comp_name}}</p>
+        </ion-item>
+      </ion-card>
+      <!-- <div class="apply-user" *ngFor="let item of scroll.viewPortItems"> -->
+      <!-- <ion-item>
           <div class="main-content" [class.has-checkbox]="checkState == '0' || checkState == '1'">
             <span class="custom-checkbox" [class.has-selected]="hasSelectAll || item.cb_selected" tappable
               (click)="selectItem(item);" *ngIf="checkState == '0' || checkState == '1'">
@@ -30,8 +57,8 @@
             </span>
             <apply-info [item]="item"></apply-info>
           </div>
-        </ion-item>
-      </div>
+        </ion-item> -->
+      <!-- </div> -->
     </virtual-scroller>
   </div>
 </ion-content>
