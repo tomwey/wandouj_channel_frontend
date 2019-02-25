@@ -22,7 +22,11 @@
   </div>
   <!-- <ion-list> -->
   <div class="salaries">
+
     <virtual-scroller #scroll [items]="salaryData" [childHeight]="121">
+      <div class="total-money" *ngIf="!!totalMoney">
+        共计 {{totalMoney}} 元
+      </div>
       <ion-item *ngFor="let salary of scroll.viewPortItems" class="salary-item">
         <h2 text-wrap>{{salary.title}}</h2>
         <div class="job-info">

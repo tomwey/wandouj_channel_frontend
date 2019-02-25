@@ -29,6 +29,8 @@ export class SalaryPage {
   dataType: any = '0';
   salaryData: any = [];
 
+  totalMoney: any;
+
   // @ViewChild('slides') slides: Slides;
   @ViewChild(Content) content: Content;
 
@@ -62,6 +64,9 @@ export class SalaryPage {
 
     this.users.GetSalaries(date, state, merch_id, job_id)
       .then(data => {
+        // console.log(data);
+        this.totalMoney = data['total'];
+
         if (data && data['data']) {
           this.salaryData = data['data'];
           this.error = this.salaryData.length == 0 ? '暂无工资数据' : null;
