@@ -55,7 +55,12 @@ export class SalaryPage {
     this.error = null;
     this.salaryData = [];
 
-    this.users.GetSalaries(this.dataType, true)
+    let date = this.filterItems[0].value;
+    let state = (this.filterItems[1].value || {}).value;
+    let merch_id = (this.filterItems[2].value || {}).value;
+    let job_id = (this.filterItems[this.filterItems.length - 1].value || {}).value;
+
+    this.users.GetSalaries(date, state, merch_id, job_id)
       .then(data => {
         if (data && data['data']) {
           this.salaryData = data['data'];
@@ -138,7 +143,8 @@ export class SalaryPage {
   }
 
   selectedFilterItem(ev) {
-    console.log(ev);
+    // console.log(ev);
+    this.loadSalariesData();
   }
 
   filterItems: any = [

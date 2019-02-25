@@ -532,10 +532,16 @@ export class Users {
         });
     }
 
-    GetSalaries(state, showLoading = true, loadingText = '加载中...') {
+    GetSalaries(date, state, comp_id, job_id) {
         return new Promise((resolve, reject) => {
             this.token().then(token => {
-                this.api.GET('channel/portal/salaries', { token: token, state: state }, loadingText, showLoading)
+                this.api.GET('channel/portal/salaries', {
+                    token: token,
+                    date: date,
+                    state: state,
+                    comp_id: comp_id,
+                    job_id: job_id
+                }, '加载中...', true)
                     .then(res => {
                         resolve(res);
                     })

@@ -39,13 +39,19 @@ page-salary {
         margin: 0;
     }
     
-    .segment-md .segment-button {
-        color: #666;
-        border-bottom-width: 0;
-        // padding-top: 1px;
-        &.segment-activated {
-            color: color($colors,primary);
-            border-bottom-width: 2px;
+    // .segment-md .segment-button {
+    //     color: #666;
+    //     border-bottom-width: 0;
+    //     // padding-top: 1px;
+    //     &.segment-activated {
+    //         color: color($colors,primary);
+    //         border-bottom-width: 2px;
+    //     }
+    // }
+
+    .salaries {
+        .item-ios.item-block .item-inner {
+            border-bottom: 0.55px solid #f2f2f2;
         }
     }
 
@@ -67,19 +73,27 @@ page-salary {
             font-size: 12px;
         }
 
-        p {
-            font-size: 12px;
-            color: #666;
+        .job-info {
+            margin: 10px 0;
+            p {
+                margin: 0;
+                padding: 0;
+                font-size: 12px;
+                color: #999;
+                line-height: 14px;
+            }
         }
+
+        .pay-time {
+            font-size: 12px;
+            color: #333;
+        }
+
         h2 {
             font-size: 14px;
             color: rgb(58,58,58);
             padding-top: 2px;
             padding-bottom: 2px;
-        }
-
-        .state {
-            
         }
     }
 }

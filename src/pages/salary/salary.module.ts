@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { SalaryPage } from './salary';
 import { ComponentsModule } from '../../components/components.module';
+import { VirtualScrollerModule } from 'ngx-virtual-scroller';
 
 @NgModule({
   declarations: [
@@ -9,7 +10,8 @@ import { ComponentsModule } from '../../components/components.module';
   ],
   imports: [
     IonicPageModule.forChild(SalaryPage),
-    ComponentsModule
+    ComponentsModule,
+    VirtualScrollerModule,
   ],
 })
 export class SalaryPageModule { }
