@@ -50,7 +50,10 @@ export class ProfilePage {
     public navParams: NavParams) {
 
     this.profile = this.navParams.data.profile;
-    this.fillControls(this.profile);
+    if (this.profile) {
+      this.fillControls(this.profile);
+    }
+
   }
 
   ionViewDidLoad() {

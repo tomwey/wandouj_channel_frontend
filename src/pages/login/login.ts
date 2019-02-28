@@ -78,8 +78,10 @@ export class LoginPage {
       .then(data => {
         console.log(data);
         // this.checkProfile();
-        if (!data['pay_account']) {
-          this.app.getRootNavs()[0].setRoot('ProfilePage', { profile: data });
+        let account = data && data['pay_account'];
+        if (!account) {
+          this.app.getRootNavs()[0].setRoot('ProfilePage');
+          // this.navCtrl.push('ProfilePage', { profile: data });
         } else {
           this.app.getRootNavs()[0].setRoot(TabsPage);
         }
