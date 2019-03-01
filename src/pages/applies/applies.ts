@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, Content } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Content, AlertController } from 'ionic-angular';
 import { Users } from '../../provider/Users';
 import { Tools } from '../../provider/Tools';
 import { Utils } from '../../provider/Utils';
@@ -27,12 +27,13 @@ export class AppliesPage {
   constructor(public navCtrl: NavController,
     private users: Users,
     private tools: Tools,
+    private alertCtrl: AlertController,
     private iosFixed: iOSFixedScrollFreeze,
     public navParams: NavParams) {
+
   }
 
   ionViewDidLoad() {
-    // console.log('ionViewDidLoad AppliesPage');
     this.iosFixed.fixedScrollFreeze(this.content);
 
     setTimeout(() => {
@@ -148,6 +149,41 @@ export class AppliesPage {
       })
       .catch(error => {
         this.error = error.message || "服务器出错了~";
+      });
+  }
+
+  handleApprove(item, flag) {
+    if (!flag) {
+      this.alertCtrl.create({
+        title: "提示",
+        subTitle: "您确定要拒绝该报名申请吗？",
+        buttons: [
+          {
+            role: 'Cancel',
+            text: '取消'
+          },
+          {
+            text: '确定',
+            handler: () => {
+              this.doHandleApply(item, flag);
+            }
+          }
+        ]
+      }).present();
+    } else {
+      this.doHandleApply(item, flag);
+    }
+
+  }
+
+  doHandleApply(item, flag) {
+    this.users.HandleApply(item.id, flag ? 'approve' : 'reject')
+      .then(data => {
+        this.tools.showToast("处理成功！");
+        this.loadApplies();
+      })
+      .catch(error => {
+        this.tools.showToast(error.message || "服务器超时，请重试");
       });
   }
 

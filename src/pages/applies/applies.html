@@ -34,7 +34,7 @@
         </div>
         <div class="job">
           <ion-item>
-            <p>{{item.job.project_name}} | {{item.job.name}}</p>
+            <p text-wrap>「{{item.job.project_name}}」{{item.job.name}}</p>
             <ion-badge color="{{colorBy(item)}}" item-right>{{item.state_name}}</ion-badge>
           </ion-item>
         </div>
@@ -42,8 +42,13 @@
           <ion-avatar item-start>
             <img [src]="item.job.comp_logo || 'assets/imgs/default_avatar.png'">
           </ion-avatar>
-          <h2>{{item.job.comp_alias_name}}</h2>
-          <p>{{item.job.comp_name}}</p>
+          <h2 text-wrap>{{item.job.comp_alias_name}}</h2>
+          <p text-wrap>{{item.job.comp_name}}</p>
+          <ion-note item-right>
+            <button ion-button small (click)="handleApprove(item,false);" *ngIf="item.can_reject"
+              color="danger">拒绝</button>
+            <button ion-button small (click)="handleApprove(item,true);" *ngIf="item.can_approve">通过</button>
+          </ion-note>
         </ion-item>
       </ion-card>
       <!-- <div class="apply-user" *ngFor="let item of scroll.viewPortItems"> -->

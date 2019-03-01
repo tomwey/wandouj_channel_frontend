@@ -249,12 +249,12 @@ export class Users {
         });
     }
 
-    HandleApply(job_id, work_date, action) {
+    HandleApply(apply_id, action) {
         return new Promise((resolve, reject) => {
             this.token().then(token => {
                 // params['token'] = token;
-                this.api.POST('gwc/apply/' + action,
-                    { token: token, job_id: job_id, work_date: work_date }, "正在提交", true)
+                this.api.POST('channel/applies/' + action,
+                    { token: token, id: apply_id }, "正在提交", true)
                     .then(res => {
                         resolve(res);
                     })
