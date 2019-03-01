@@ -5,6 +5,8 @@ import 'rxjs/add/operator/toPromise';
 import { Md5 } from 'ts-md5/dist/md5';
 import { Tools } from './Tools';
 import { COMM_API_KEY, CHN_API_KEY } from '../app/config';
+import { LoginPage } from '../pages/login/login';
+import { App } from 'ionic-angular';
 
 /*
   Generated class for the ApiService provider.
@@ -37,7 +39,7 @@ export class ApiService {
 
   count: number = 0;
 
-  constructor(public http: Http, private tools: Tools) {
+  constructor(public http: Http, private app: App, private tools: Tools) {
     // console.log('Hello ApiService Provider');
   }
 
@@ -208,6 +210,9 @@ export class ApiService {
     if (body.code == 0) {
       let rd: ResultData = { code: 0, total: body.total, data: body.data || {} };
       return rd;
+    } else if (body.code == 401) {
+      this.app.getRootNavs()[0].setRoot(LoginPage);
+      return body;
     } else {
       let errorData: ErrorData = { code: body.code, message: body.message };
       return errorData;

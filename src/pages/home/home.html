@@ -61,13 +61,15 @@
       </div>
 
     </div>
-    <div class="earn-box">
+    <!-- <div class="earn-box">
 
-    </div>
+    </div> -->
   </div>
+  <div class="empty-error-box" *ngIf="!!error">{{error}}</div>
 
-  <div class="companies box">
+  <div class="companies box" *ngIf="companies.length > 0">
     <h2 class="title">人力公司推荐</h2>
+
     <div class="company-list">
       <ion-list>
         <ion-item *ngFor="let comp of companies" tappable (click)="viewJobs(comp);">

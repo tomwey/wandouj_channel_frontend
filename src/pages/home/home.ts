@@ -129,6 +129,7 @@ export class HomePage {
 
   loadHomeData() {
     return new Promise((resolve) => {
+      this.error = null;
       this.users.GetUserHomeData()
         .then(data => {
           // console.log(data);
@@ -136,6 +137,13 @@ export class HomePage {
           this.channel = result['channel'];
           this.companies = result['companies'];
           this.children = result['children'];
+
+          this.error = this.companies.length === 0 ? '暂无合作的人力公司' : null;
+
+          if (!this.channel || !this.channel.pay_account) {
+            this.app.getRootNavs()[0].setRoot("ProfilePage");
+          }
+
           resolve();
         })
         .catch(error => {
