@@ -23,24 +23,31 @@
   <!-- <ion-list> -->
   <div class="salaries">
 
-    <virtual-scroller #scroll [items]="salaryData" [childHeight]="121">
+    <virtual-scroller #scroll [items]="salaryData" [childHeight]="158">
       <div class="total-money" *ngIf="!!totalMoney">
         共计 {{totalMoney}} 元
       </div>
-      <ion-item *ngFor="let salary of scroll.viewPortItems" class="salary-item">
-        <h2 text-wrap>{{salary.title}}</h2>
-        <div class="job-info">
-          <p>兼职名称：{{salary.job_name}}</p>
-          <p>兼职项目：{{salary.project_name}}</p>
-          <p>所属公司：{{salary.merchant && (salary.merchant.alias_name || salary.merchant.name)}}</p>
-        </div>
-        <p class="pay-time">{{ salary.pay_time ? '确认发放时间: ' + salary.pay_time : '申请发放时间: ' + salary.time }}</p>
-        <ion-note item-right style="text-align:right;">
-          <p class="money"><span class="unit">¥</span>{{salary.money}}</p>
-          <ion-badge color="{{salary.pay_time ? 'primary' : 'danger'}}">{{salary.pay_time ? '已发放' : '未发放'}}
-          </ion-badge>
-        </ion-note>
-      </ion-item>
+      <div *ngFor="let salary of scroll.viewPortItems" class="salary-item">
+        <ion-item>
+          <h2 text-wrap>{{salary.title}}</h2>
+          <div class="job-info">
+            <p text-wrap>「{{salary.project_name}}」{{salary.job_name}}</p>
+          </div>
+          <p class="pay-time">{{ salary.pay_time ? '确认发放时间: ' + salary.pay_time : '申请发放时间: ' + salary.time }}</p>
+          <ion-note item-right style="text-align:right;">
+            <p class="money"><span class="unit">¥</span>{{salary.money}}</p>
+            <ion-badge color="{{salary.pay_time ? 'primary' : 'danger'}}">{{salary.pay_time ? '已发放' : '未发放'}}
+            </ion-badge>
+          </ion-note>
+        </ion-item>
+        <ion-item>
+          <ion-avatar item-left>
+            <img [src]="salary.comp_logo || 'assets/imgs/default_avatar.png'">
+          </ion-avatar>
+          <h2 class="comp-alias">{{salary.comp_alias}}</h2>
+          <p class="comp-name">{{salary.comp_name}}</p>
+        </ion-item>
+      </div>
     </virtual-scroller>
   </div>
   <!-- </div> -->

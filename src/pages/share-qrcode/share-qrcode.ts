@@ -71,11 +71,12 @@ export class ShareQrcodePage {
     div.appendChild(logo);
 
     let p = document.createElement("p");
-    p.textContent = "长按识别二维码";
+    p.textContent = "识别二维码，查看兼职信息";
     p.style.marginTop = "2px";
     p.style.textAlign = "center";
     p.style.fontSize = "12px";
-    p.style.color = "#999";
+    p.style.fontWeight = "700";
+    p.style.color = "#333";
 
     div.appendChild(p);
 

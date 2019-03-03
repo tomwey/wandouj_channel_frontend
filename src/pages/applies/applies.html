@@ -17,7 +17,7 @@
 <ion-content>
   <div class="empty-error-box" *ngIf="!!error">{{error}}</div>
   <div class="applies">
-    <virtual-scroller #scroll [items]="applies" [childHeight]="168">
+    <virtual-scroller #scroll [items]="applies" [childHeight]="280">
       <div class="total-box" *ngIf="applies.length > 0">共 {{applies.length}} 人</div>
       <ion-card *ngFor="let item of scroll.viewPortItems">
         <div class="base-info">
@@ -35,6 +35,14 @@
         <div class="job">
           <ion-item>
             <p text-wrap>「{{item.job.project_name}}」{{item.job.name}}</p>
+            <p class="agent-info" *ngIf="item.from_agent">来源渠道：{{item.from_agent}}</p>
+            <p class="time-wrap">
+              上班时间: {{item.work_time_range}}<br>
+              报名时间: {{item.apply_time}}<br>
+              签到时间: {{item.checkin_time || '--'}}<br>
+              签退时间: {{item.checkout_time || '--'}}<br>
+              工作时长: {{item.work_length || '--'}}
+            </p>
             <ion-badge color="{{colorBy(item)}}" item-right>{{item.state_name}}</ion-badge>
           </ion-item>
         </div>
