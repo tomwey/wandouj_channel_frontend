@@ -15,7 +15,7 @@ import { App } from 'ionic-angular';
   for more info on providers and Angular 2 DI.
 */
 // 正式服务器和账号
-const API_HOST: string = "http://jobs.afterwind.cn/api/v1";
+const API_HOST: string = "http://b.wandou.work/api/v1";
 // const API_KEY: string = "4d7295cda1e6dc65dfcf4466db008a8f";
 // const GWC_API_KEY: string = "63a2cc918b179eae4b2859e36b501afd";
 
